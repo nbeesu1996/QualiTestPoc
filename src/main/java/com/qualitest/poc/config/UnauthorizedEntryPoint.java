@@ -20,6 +20,8 @@ public class UnauthorizedEntryPoint implements AuthenticationEntryPoint, Seriali
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException {
     	logger.error("***********************************");
+    	logger.error(authException.getCause());
+    	logger.error(authException.fillInStackTrace());
     	authException.printStackTrace();
     	response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
     }
