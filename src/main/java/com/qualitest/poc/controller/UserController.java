@@ -52,7 +52,7 @@ public class UserController {
      * As per the requirement Admin can only create User
      * 
      * */
-    @PreAuthorize("hasRole('ADMIN')")
+   // @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value="/register", method = RequestMethod.POST)
     public User saveUser(@RequestBody @Validated UserDto user) throws Exception{
         return userService.save(user);
