@@ -25,6 +25,7 @@ import com.qualitest.poc.model.Rules;
 import com.qualitest.poc.util.CSVHelper;
 
 @RestController
+@RequestMapping("/rule")
 public class CsvApiController {
 
 	@Autowired
