@@ -7,7 +7,7 @@ import org.springframework.security.access.method.MethodSecurityMetadataSource;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
 
-@Configuration
+/*@Configuration
 @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class MethodSecurityConfig extends GlobalMethodSecurityConfiguration {
@@ -16,5 +16,4 @@ public class MethodSecurityConfig extends GlobalMethodSecurityConfiguration {
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     public MethodSecurityMetadataSource methodSecurityMetadataSource() {
         return super.methodSecurityMetadataSource();
-    }
-}
+    }}*/
