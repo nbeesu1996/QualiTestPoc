@@ -10,6 +10,7 @@ import org.springframework.util.ObjectUtils;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
+import com.qualitest.poc.model.CsvRule;
 import com.qualitest.poc.model.User;
 
 public interface QualitestUtil {
@@ -17,12 +18,8 @@ public interface QualitestUtil {
 	public static String writeUserIntoFile(User user) throws Exception {
 		List<User> usersList = readUsers();
 		if (!ObjectUtils.isEmpty(usersList)) {
-			usersList.forEach(u->{
-				System.out.println(u.getUsername());
-			});;
-			
-			if (usersList.stream().anyMatch(u->u.getUsername().equalsIgnoreCase(user.getUsername()))) {
-				throw new Exception("User Already exist with userName : "+user.getUsername());
+			if (usersList.stream().anyMatch(u -> u.getUsername().equalsIgnoreCase(user.getUsername()))) {
+				throw new Exception("User Already exist with userName : " + user.getUsername());
 			}
 		}
 		usersList.add(user);
@@ -36,10 +33,9 @@ public interface QualitestUtil {
 
 		try {
 			ObjectMapper mapper = new ObjectMapper();
-			
-			CollectionType listType = 
-					mapper.getTypeFactory().constructCollectionType(ArrayList.class, User.class);
-			
+
+			CollectionType listType = mapper.getTypeFactory().constructCollectionType(ArrayList.class, User.class);
+
 			mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 			t = mapper.readValue(file, listType);
 		} catch (Exception e) {
@@ -48,7 +44,7 @@ public interface QualitestUtil {
 
 		return t;
 	}
-	
+
 	public static String writeUser(List<User> classType) {
 
 		File file = new File("src/main/resources/users.json");
@@ -62,6 +58,21 @@ public interface QualitestUtil {
 
 		return "UserSaved Successfully into Db";
 	}
-	
-	
+
+	public static List<CsvRule> getRulesFromJson() throws Exception {
+		List<CsvRule> t = new ArrayList<>();
+		File file = new File("src/main/resources/rules.json");
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			CollectionType listType = mapper.getTypeFactory().constructCollectionType(ArrayList.class, CsvRule.class);
+			mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+			t = mapper.readValue(file, listType);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+
+		return t;
+	}
+
 }
