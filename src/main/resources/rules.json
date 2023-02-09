@@ -1,0 +1,64 @@
+[
+	
+	{
+		"ruleNumber":"1",
+		"ruleText":"Form of a question - Question mark mandatory and question text is mandatory",
+		"isEnabled":true
+	},
+	{
+		"ruleNumber":"2",
+		"ruleText":"Avoid clang",
+		"isEnabled":true
+	},
+	{
+		"ruleNumber":"3",
+		"ruleText":"Option a subset/component of another option",
+		"isEnabled":true
+	},
+	{
+		"ruleNumber":"4",
+		"ruleText":"Two options are too parallel to one another",
+		"isEnabled":true
+	},
+	{
+		"ruleNumber":"5",
+		"ruleText":"Subjectivity in the question statement",
+		"isEnabled":true
+	},
+	
+	{
+		"ruleNumber":"6",
+		"ruleText":"Answer option repetition - No answers should be avoided",
+		"isEnabled":true
+	},
+	{
+		"ruleNumber":"7",
+		"ruleText":"Flag for missing number prompt if (s)",
+		"isEnabled":true
+	},
+	{
+		"ruleNumber":"8",
+		"ruleText":"Avoid 'not' or 'except' in the question.",
+		"isEnabled":true
+	},
+	{
+		"ruleNumber":"9",
+		"ruleText":"Grammar check",
+		"isEnabled":true
+	},
+	{
+		"ruleNumber":"10",
+		"ruleText":"Serial/Oxford comma check",
+		"isEnabled":true
+	},
+	{
+		"ruleNumber":"11",
+		"ruleText":"Spell single digits",
+		"isEnabled":true
+	},
+	{
+		"ruleNumber":"12",
+		"ruleText":"Options Start with Cap",
+		"isEnabled":true
+	}
+]

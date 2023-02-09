@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,7 @@ import com.qualitest.poc.model.Items;
 import com.qualitest.poc.model.Keys;
 import com.qualitest.poc.model.Rules;
 import com.qualitest.poc.util.CSVHelper;
+import com.qualitest.poc.util.QualitestUtil;
 
 @RestController
 @RequestMapping("/rule")
@@ -30,7 +33,7 @@ public class CsvApiController {
 
 	@Autowired
 	private ObjectMapper mapper;
-
+	Logger logger = LoggerFactory.getLogger(CsvApiController.class);
 	@PostMapping(path = "/runRuleEngine")
 	public ResponseEntity<?> processRules(@RequestParam("items") MultipartFile itemsFile,
 			@RequestParam("keys") MultipartFile keysFile, @RequestParam("rules") String rule) {
@@ -67,6 +70,12 @@ public class CsvApiController {
 		}
 
 		return new ResponseEntity<>(rul, HttpStatus.OK);
+	}
+	
+	@GetMapping("all")
+	public ResponseEntity<?> getRules() throws Exception{
+		logger.info("Requesting for rules");
+		return new ResponseEntity<>(QualitestUtil.getRulesFromJson(), HttpStatus.OK);
 	}
 
 }
